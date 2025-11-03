@@ -151,6 +151,12 @@ public class SnakeGame {
       // Check collision with self
       if (snake.contains(next)) {
         running = false;
+        // stop updates
+        if (timer != null) {
+          timer.stop();
+        }
+        // play game over sound (optional)
+        SoundEffects.playGameOver();
         return;
       }
 
@@ -159,6 +165,7 @@ public class SnakeGame {
       // Check food
       if (next.equals(food)) {
         placeFood(); // grow
+        SoundEffects.playEat();
       } else {
         snake.removeLast(); // move
       }
@@ -174,6 +181,10 @@ public class SnakeGame {
       if (!running) {
         if (kc == KeyEvent.VK_R) {
           initGame();
+          // ensure timer runs again after game over
+          if (timer != null) {
+            timer.start();
+          }
         }
         return;
       }
