@@ -89,6 +89,30 @@ public class App {
                 case "12":
                     ExecutorFrameworkUsage.demonstrateExecutorFramework();
                     break;
+                case "13":
+                    GenericClassesDemo.demonstrateGenerics();
+                    break;
+                case "14":
+                    WildcardsInGenerics.demonstrateWildcards();
+                    break;
+                case "15":
+                    LambdaExpressionsDemo.demonstrateLambdas();
+                    break;
+                case "16":
+                    StreamAPIDemo.demonstrateStreamAPI();
+                    break;
+                case "17":
+                    OptionalClassDemo.demonstrateOptional();
+                    break;
+                case "18":
+                    FunctionalInterfacesDemo.demonstrateFunctionalInterfaces();
+                    break;
+                case "19":
+                    MethodReferencesDemo.demonstrateMethodReferences();
+                    break;
+                case "20":
+                    CustomAnnotationsDemo.demonstrateCustomAnnotations();
+                    break;
                 case "0":
                     Utils.printLine("Thank you for learning Java!");
                     scanner.close();
