@@ -39,8 +39,8 @@ public class App {
         System.out.println("26. Advanced Enums");
         System.out.println("27. JUnit Testing");
         System.out.println("28. Mockito Framework");
-        System.out.println("29. JDBC Operations");
-        System.out.println("30. Simple Application");
+        System.out.println("29. JDBC Operations(Todo with sqlite, json)");
+        System.out.println("30. Simple Application(Snake Game)");
         System.out.println(" 0. Exit");
         System.out.print("\nSelect an example to run (0-30): ");
     }
@@ -49,6 +49,11 @@ public class App {
         Scanner scanner = new Scanner(System.in);
         while (true) {
             showMenu();
+            if (!scanner.hasNextLine()) {
+                System.out.println("No console input available. Exiting.");
+                scanner.close();
+                return;
+            }
             String choice = scanner.nextLine();
             System.out.println(); // Add a blank line for better readability
 
@@ -140,10 +145,14 @@ public class App {
                 case "29":
                     JDBCOperations.demonstrateJDBC();
                     break;
+                case "30":
+                    // Simple application: Snake game
+                    examples.SnakeGame.launch();
+                    break;
                 case "0":
                     Utils.printLine("Thank you for learning Java!");
                     scanner.close();
-                    return;
+                    System.exit(0);
                 default:
                     if (choice.matches("\\d+")) {
                         System.out.println("This example is coming soon!");
@@ -152,7 +161,9 @@ public class App {
                     }
             }
             System.out.println("\nPress Enter to continue...");
-            scanner.nextLine();
+            if (scanner.hasNextLine()) {
+                scanner.nextLine();
+            }
         }
     }
 }

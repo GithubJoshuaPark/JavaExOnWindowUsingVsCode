@@ -44,9 +44,22 @@ java {
 application {
     // Define the main class for the application.
     mainClass = 'javaex.App'
+
+    // Configure the application for desktop usage
+    applicationDefaultJvmArgs = [
+        '-Dawt.useSystemAAFontSettings=on',  // Better font rendering
+        '-Dswing.aatext=true',              // Anti-aliased text
+        '-Dsun.java2d.opengl=true'          // Hardware acceleration
+    ]
 }
 
-tasks.named('test') {
+// Configure the run task for better interactive experience
+run {
+    standardInput = System.in
+    jvmArgs = application.applicationDefaultJvmArgs
+}
+
+tasks.withType(Test) {
     // Use JUnit Platform for unit tests.
     useJUnitPlatform()
 }
