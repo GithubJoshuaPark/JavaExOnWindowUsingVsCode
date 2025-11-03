@@ -113,6 +113,33 @@ public class App {
                 case "20":
                     CustomAnnotationsDemo.demonstrateCustomAnnotations();
                     break;
+                case "21":
+                    ReflectionAPIDemo.demonstrateReflection();
+                    break;
+                case "22":
+                    DateTimeAPIDemo.demonstrateDateTime();
+                    break;
+                case "23":
+                    SingletonPatternDemo.demonstrateSingleton();
+                    break;
+                case "24":
+                    FactoryPatternDemo.demonstrateFactory();
+                    break;
+                case "25":
+                    ObserverPatternDemo.demonstrateObserver();
+                    break;
+                case "26":
+                    AdvancedEnumsDemo.demonstrateAdvancedEnums();
+                    break;
+                case "27":
+                    JUnitTestingDemo.demonstrateJUnitTesting();
+                    break;
+                case "28":
+                    MockitoFrameworkDemo.demonstrateMockito();
+                    break;
+                case "29":
+                    JDBCOperations.demonstrateJDBC();
+                    break;
                 case "0":
                     Utils.printLine("Thank you for learning Java!");
                     scanner.close();
