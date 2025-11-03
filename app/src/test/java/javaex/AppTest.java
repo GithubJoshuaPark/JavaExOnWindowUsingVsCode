@@ -3,12 +3,7 @@
  */
 package javaex;
 
-import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
-
 class AppTest {
-    @Test void appHasAGreeting() {
-        App classUnderTest = new App();
-        assertNotNull(classUnderTest.getGreeting(), "app should have a greeting");
-    }
+    // No test available: App class no longer has getGreeting().
+    // Add new tests for menu or utility functions if needed.
 }
