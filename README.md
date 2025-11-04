@@ -239,3 +239,6 @@ Hello, Java World!
 java -jar app/build/libs/app.jar
 ```
 
+![](menu.png)
+<br>
+![](snake.png)
