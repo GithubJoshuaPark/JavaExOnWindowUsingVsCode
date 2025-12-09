@@ -45,45 +45,82 @@ public class App {
 }
 ```
 
-## 2. 컴파일 및 빌드
+## 2. 프로젝트 빌드 및 실행
 
-- vsCode 터미널에서 아래 명령어 실행
+이 프로젝트는 **Gradle**을 사용하여 빌드되고 실행됩니다. 포함된 Gradle Wrapper를 사용하면 별도의 Gradle 설치 없이도 실행 가능합니다.
+
+### 2.1 애플리케이션 실행 (권장)
+
+소스 코드를 컴파일하고 즉시 실행합니다.
+
+- **macOS / Linux**:
+  ```bash
+  ./gradlew :app:run
+  ```
+- **Windows**:
+  ```cmd
+  gradlew.bat :app:run
+  ```
+
+### 2.2 전체 빌드 (JAR 생성)
+
+배포 가능한 JAR 파일을 생성합니다.
+
+- **macOS / Linux**:
+  ```bash
+  ./gradlew build
+  ```
+- **Windows**:
+  ```cmd
+  gradlew.bat build
+  ```
+  _생성된 파일 위치: `app/build/libs/app.jar`_
+
+### 2.3 JAR 파일 실행
+
+빌드된 JAR 파일을 직접 실행합니다.
 
 ```bash
-cd app
-javac -d build/classes/java/main src/main/java/javaex/App.java
-jar --create --file build/libs/app.jar -C build/classes/java/main .
+java -jar app/build/libs/app.jar
 ```
-
-## 3. 실행
-
-- vsCode 터미널에서 아래 명령어 실행
 
 ```bash
-cd app
-java -cp build/libs/app.jar javaex.App
+app/build/libs/app.jar
+파일은 이 프로젝트의 최종 결과물인 '실행 가능한 배포 파일'
+(Executable JAR, Fat JAR) 입니다.
+
+이 파일의 핵심 용도와 특징은 다음과 같습니다:
+
+1. 배포 및 공유 (Distribution)
+    - 개발 환경(VS Code, Gradle 등)이 없는 컴퓨터에서도 Java만 설치되어 있다면
+      이 파일 하나만 가지고 프로그램을 실행할 수 있습니다.
+    - 친구에게 프로그램을 보내주거나, 서버에 프로그램을 띄울 때
+      이 파일만 복사해서 사용합니다.
+
+2. 모든 라이브러리 포함 (Fat JAR / Uber JAR)
+    - 작성하신 소스 코드뿐만 아니라, 프로젝트 실행에 필요한
+      모든 외부 라이브러리(Gson, SQLite Driver 등)가
+      이 파일 하나에 모두 압축되어 포함되어 있습니다.
+    - 따라서 실행할 때 복잡하게 라이브러리 경로(-cp 또는 -classpath)를
+      따로 지정해 줄 필요가 없습니다.
+
+3. 사용 예시: 터미널에서 다음과 같이 명령어 한 줄로
+   프로그램을 즉시 실행할 수 있습니다.
+
+    java -jar app/build/libs/app.jar
+
 ```
 
-- 출력 결과
-
-```bash
-Hello, Java World!
-```
-
-## 4. 참고
+## 3. 참고
 
 - [Java 공식 문서](https://docs.oracle.com/en/java/)
 - [vsCode Java Extension](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack)
 - [JDK 다운로드](https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html)
-- [JDK 설치 및 환경 변수 설정 가이드](https://www.baeldung.com/java-home-on-windows-10)
-- [Java 컴파일 및 실행 가이드](https://www.geeksforgeeks.org/how-to-compile-and-run-a-java-program-in-windows/)
-- [vsCode에서 Java 프로젝트 설정 가이드](https://code.visualstudio.com/docs/java/java-project)
-- [Java JAR 파일 생성 및 실행 가이드](https://www.javatpoint.com/how-to-create-jar-file-in-java)
-- [Java 패키지 및 모듈 가이드](https://www.baeldung.com/java-modularity)
+- [Gradle 공식 문서](https://docs.gradle.org/current/userguide/userguide.html)
 
 ---
 
-## 예제 프로그램 목록 및 설명
+## 4. 예제 프로그램 목록 및 설명
 
 ### 기본 프로그래밍 개념
 
@@ -250,39 +287,6 @@ Hello, Java World!
       - 먹이(빨간 점)를 먹으면 뱀이 성장
       - 자신의 몸과 충돌하면 게임 오버
       - 'R' 키로 재시작
-
-## 프로젝트 빌드 및 실행
-
-### Gradle 명령어
-
-```bash
-# 전체 프로젝트 빌드
-./gradlew build
-
-# 애플리케이션 실행
-./gradlew :app:run
-
-# 테스트 실행
-./gradlew test
-
-# 배포용 JAR 생성 (의존성 포함)
-./gradlew :app:jar
-```
-
-### 배포 방법
-
-1. **Fat JAR 생성**
-
-```bash
-./gradlew :app:build
-# JAR 파일은 app/build/libs/ 디렉토리에 생성됨
-```
-
-2. **실행 방법**
-
-```bash
-java -jar app/build/libs/app.jar
-```
 
 ![](menu.png)
 <br>
